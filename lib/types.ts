@@ -1,0 +1,38 @@
+export interface Process {
+  id: string
+  arrivalTime: number
+  burstTime: number
+  priority?: number
+  remainingTime?: number
+  completionTime?: number
+  turnaroundTime?: number
+  waitingTime?: number
+  responseTime?: number
+  startTime?: number
+}
+
+export interface SchedulingResult {
+  processes: Process[]
+  ganttChart: GanttItem[]
+  averageWaitingTime: number
+  averageTurnaroundTime: number
+  averageResponseTime: number
+  totalTime: number
+}
+
+export interface GanttItem {
+  processId: string
+  startTime: number
+  endTime: number
+  isIdle?: boolean
+}
+
+export type SchedulingAlgorithm = "FCFS" | "RR" | "SJF" | "PRIORITY"
+
+export interface AlgorithmConfig {
+  timeQuantum?: number
+  isPreemptive?: boolean
+  priorityHighIsMin?: boolean
+}
+
+
